@@ -183,9 +183,10 @@ public class Utilidades {
 		Collections.sort(plantilla,new Comparator<Trabajador>() {
                   public int compare( Trabajador t1, Trabajador t2) {
                       int someIntVal = t1.compareTo(t2);
-                      return someIntVal;}
-                }
-               );
+                      return someIntVal;
+                      }
+                  }
+		);
 		
 	}
 }
