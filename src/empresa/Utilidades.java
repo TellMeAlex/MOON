@@ -25,7 +25,8 @@ public class Utilidades {
 	
 	
 	/**
-	 * @param Nº de repeticiones de  y caracter 
+	 * @param Nº de repeticiones
+	 * @param Caracter a repetir
 	 * @return 
 	 */
 	public static String Pintalinea(int repeticiones, String caracter) {

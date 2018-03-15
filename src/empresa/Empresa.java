@@ -17,8 +17,8 @@ public class Empresa implements Serializable {
 	TreeMap<String, Tecnologia> tecnologias;
 	
 	/**
-	 * @author llama
-	 * Constructor de clase
+	 * @author alejandro
+	 * Constructor de clase de empresa sin ningun parametro
 	 */
 	public Empresa() {
 		
@@ -28,6 +28,7 @@ public class Empresa implements Serializable {
 	}
 
 	/**
+	 * Obteber el objeto plantilla
 	 * @return el plantilla
 	 */
 	public TreeMap <String,Trabajador> getPlantilla() {
@@ -35,6 +36,7 @@ public class Empresa implements Serializable {
 	}
 
 	/**
+	 * Modificar toda la plantilla
 	 * @param plantilla el plantilla a establecer
 	 */
 	public void setPlantilla(TreeMap <String,Trabajador> plantilla) {
@@ -42,6 +44,7 @@ public class Empresa implements Serializable {
 	}
 
 	/**
+	 * Obteber el centro
 	 * @return el centros
 	 */
 	public Centro getCentros(Centro buscado) {
