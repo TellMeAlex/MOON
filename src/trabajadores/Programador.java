@@ -7,7 +7,7 @@ public class Programador extends Tecnico{
 
 	@Override
 	public double nomina(int mes) {
-		return (Utilidades.dias(mes)*20.50)+200;
+		return (Utilidades.Mes(mes)*20.50)+200;
 	}
 
 }

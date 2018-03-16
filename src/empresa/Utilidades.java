@@ -11,15 +11,15 @@ import trabajadores.Trabajador;
 
 public class Utilidades {
 	static String [] primerMenu = {"Cargar empresa.","Crear una nueva empresa","Salir"};
-	static String [] gestion= {"Gestión Centro de Trabajo.","Gestion de Tecnologia","Gestión de Empleado","Listar","Buscar empleado","Salir"};
-	static String [] gestionCentro= {"Añadir Centro de Trabajo","Borrar Centro de Trabjo","Salir"};
-	static String [] datosCentro= {"Codigio","Nombre","Provincia","Localidad","Telefono","Salir"};
-	static String [] gestionTecnologias= {"Añadir Tecnologia","Borrar Tecnologia","Salir"};
-	static String [] datosTecnologia= {"Nombre","Descripcion","Salir"};
-	static String [] gestionEmpleados= {"Añadir Empleado","Borrar Empleado","Salir"};
-	static String [] buscarEmpleados= {"Por nombre","Por DNI","Por Apellido","Salir"};
-	static String [] Empleados= {"Tecnico","Administrativo","Salir"};
-	static String [] Tecnicos= {"Programador","Analista","Becario","Salir"};
+	static String [] gestion= {"Salir","Gestión Centro de Trabajo.","Gestion de Tecnologia","Gestión de Empleado","Listar","Buscar empleado"};
+	static String [] gestionCentro= {"Salir","Añadir Centro de Trabajo","Borrar Centro de Trabjo"};
+	static String [] datosCentro= {"Salir","Codigio","Nombre","Provincia","Localidad","Telefono"};
+	static String [] gestionTecnologias= {"Salir","Añadir Tecnologia","Borrar Tecnologia"};
+	static String [] datosTecnologia= {"Salir","Nombre","Descripcion"};
+	static String [] gestionEmpleados= {"Salir","Añadir Empleado","Borrar Empleado"};
+	static String [] buscarEmpleados= {"Salir","Por nombre","Por DNI","Por Apellido",};
+	static String [] Empleados= {"Salir","Tecnico","Administrativo"};
+	static String [] Tecnicos= {"Salir","Programador","Analista","Becario"};
 	static Scanner lector = new Scanner(System.in);
 	
 	
@@ -79,8 +79,8 @@ public class Utilidades {
 
 	/**
 	 * 
-	 * @param vector de String
-	 * @return El tamaño del String mas grande
+	 * @param Vector de String
+	 * @return El tamaño(int) del String mas grande
 	 */
 	
 	public static int MasGrande(String[] vector ) {
@@ -92,11 +92,6 @@ public class Utilidades {
 			}
 		}
 		return valor_mas_alto;
-		
-		
-		
-	
-		
 	}
 	
 
@@ -112,53 +107,116 @@ public class Utilidades {
 		
 	}
 	
-	public void listar(Collection<Trabajador> a) {
+	
+	/**
+	 * Recore y muestra los trabajadores
+	 * @param Colecion de trabajadores
+	 */
+	public void listarTrabajadores(Collection<Trabajador> a) {
 		for (Trabajador t : a) {
-			System.out.println(t);
+			System.out.println(t.todosLosDatos());
 		}
 	}
 	
+
 	
-	/*
-	 * Impriem en pantalal el menu obligatorio.
+	/**
+	 * Limpia la consola 
 	 */
-	public static int primerMenu() {
-		
+	
+	public static void limpiar(){
+		for (int i=0; i < 25; i++)
+		{System.out.println();}
+		}
+	
+	/**
+	 * Imprime en pantalla el menu de cargar o la empresa.
+	 */
+	public static int primerMenu() {		
 		Menu(primerMenu, "|",".");
 		return lector.nextInt();
 	}
-	public static int gestion() {
+	/**
+	 * Imprime en pantalla el menu de cargar o la empresa.
+	 */
+	public static int menuGestion() {
 		Menu(gestion, "|",".");
 		return lector.nextInt();
 	}
-	public static int gestionCentro() {
+	/**
+	 * Imprime en pantalla el menu de Gestion Centro.
+	 */
+	public static int menuGestionCentro() {
 		Menu(gestionCentro, "|",".");
 		return lector.nextInt();
 	}
-	public static int gestionTecnologias() {
+	/**
+	 * Imprime en pantalla el menu de Gestiones de Tecnologias.
+	 */
+	public static int menuGestionTecnologias() {
 		Menu(gestionTecnologias, "|",".");
 		return lector.nextInt();
 	}
-	public static int gestionEmpleados() {
+	/**
+	 * Imprime en pantalla el menu Gestion Empleados
+	 */
+	public static int menuGestionEmpleados() {
 		Menu(gestionEmpleados, "|",".");
 		return lector.nextInt();
 	}
-	public static int buscarEmpleados() {
+	/**
+	 * Imprime en pantalla el menu BuscarEmpleados
+	 */
+	public static int menuBuscarEmpleados() {
 		Menu(buscarEmpleados, "|",".");
 		return lector.nextInt();
 	}
 
-	
-	public static boolean gestionCentro(int selector,Empresa E) {
-		boolean salir=false;
-		if (selector==1) {
-			 
+	/**
+	 * Gestion del centro de trabajao
+	 * @param E
+	 */
+	public static boolean gestionCentro(int selector,Empresa Emp) {
+		boolean salir=true;
+		String datos;
+		switch (selector) {
+		case 1:
+			salir=false;
+			break;
+		case 2:
+			//creamos un nuevo centro preguntando los datos
+			Centro cache=new Centro(Utilidades.PreguntaCentro());
 			
+			//Y lo agregamos al treemap de centros
+			Emp.añadirCentro(cache);
 			
+			break;
+		case 3:
+			
+			Emp.listarCentros();
+			//reguntamos cual es el codigo del centro
+			lector.nextLine();
+			System.out.println("¿Cual es el codigo del centro a eliminar?");
+			datos=lector.nextLine();
+			Emp.borraCentro(datos);
+			System.out.println("Borrado.");
+			lector.nextLine();
+			Utilidades.limpiar();
+			break;
+		default:
+			System.out.println("No es una opción valida. Pruebe otra vez.");
+			break;
 		}
-		return (Boolean) null;
+		return salir;
 	}
-	public static double dias(int mes) {
+		
+		/**
+		 * Metodo (chapucero) para obtener los dias que tiene cada mes
+		 * @param Nº de mes
+		 * @return dias que tiene
+		 */
+		
+	public static double Mes(int mes) {
 		double dia=0;
 		if (mes==1) { dia=31;};
 		if (mes==2) { dia=28;};
@@ -175,19 +233,33 @@ public class Utilidades {
 		return dia;
 		
 	}
-	/*
-	 * Ordenar por Nombre los trabajadores
-	 *@param Plantilla de trabjadores.
+	
+	/**
+	 * Metodo para generar un vector para recoger los datos del centro
+	 * @return String[]
 	 */
-	public static void ordenarNombre(ArrayList<Trabajador> plantilla) {
-		Collections.sort(plantilla,new Comparator<Trabajador>() {
-                  public int compare( Trabajador t1, Trabajador t2) {
-                      int someIntVal = t1.compareTo(t2);
-                      return someIntVal;
-                      }
-                  }
-		);
+	
+	public static String[] PreguntaCentro() {
+		String datos[]=new String[5];
+		lector.nextLine();
+		System.out.println("Nombre del centro");
+		datos[0]=lector.nextLine();
+		
+		System.out.println("Nombre de la localidad");
+		datos[1]=lector.nextLine();
+		
+		System.out.println("Nombre de la provincia");
+		datos[2]=lector.nextLine();
+		
+		System.out.println("Codigo");
+		datos[3]=lector.nextLine();
+	
+		System.out.println("Telefono");
+		datos[4]=lector.nextLine();
+	
+		return datos;
 		
 	}
+	
 }
 	

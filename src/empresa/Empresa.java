@@ -3,14 +3,13 @@ package empresa;
 
 import java.io.*;
 import java.util.*;
+import java.util.Map.Entry;
 
 import trabajadores.Trabajador;
 
 @SuppressWarnings("serial")
 public class Empresa implements Serializable {
-	/**
-	 * 
-	 */
+	
 	
 	TreeMap<String , Trabajador> plantilla;
 	TreeMap<String , Centro> centros;
@@ -18,7 +17,7 @@ public class Empresa implements Serializable {
 	
 	/**
 	 * @author alejandro
-	 * Constructor de clase de empresa sin ningun parametro
+	 * Constructor de clase de empresa por defecto
 	 */
 	public Empresa() {
 		
@@ -47,20 +46,33 @@ public class Empresa implements Serializable {
 	 * Obteber el centro
 	 * @return el centros
 	 */
-	public Centro getCentros(Centro buscado) {
+	public Centro getCentro(Centro buscado) {
 		centros.get(buscado.getCodigo());
 		return null;
 	}
-	public void añadirCentro() {
-		
-	}
-
+	
 	/**
-	 * @param centros el centros a establecer
+	 * Establecer el conjunto de centros por completo, de la empresa. 
+	 * @param Treemap del conjunto de centros a poner.
 	 */
 	public void setCentros(TreeMap<String,Centro> centros) {
 		this.centros = centros;
 	}
+	/**
+	 * obtener el conjunto de centros por completo, de la empresa. 
+	 * @param Treemap del conjunto de centros a obtener.
+	 */
+	public TreeMap<String , Centro> getCentros() {
+		return this.centros;
+	}
+	
+	public void añadirCentro(Centro centro_aniadido) {
+		this.centros.put(centro_aniadido.getCodigo(), centro_aniadido);
+	}
+	public void borraCentro(String borrado) {
+		this.centros.remove(borrado);
+	}
+
 
 	/**
 	 * @return el tecnologias
@@ -99,6 +111,14 @@ public class Empresa implements Serializable {
 			guardado.writeObject (o);
 	}
 	
+	public void listarCentros(){
+		for (Entry<String, Centro> centro : centros.entrySet()) {
+			Centro C=centro.getValue();
+			System.out.println(C.datosCompletos());
+		}
+		
+		
+	}
 
 	
 	

@@ -6,14 +6,25 @@ import java.util.Scanner;
 public class Principal {
 
 	public static void main(String[] args)  {
-		Scanner lector = new Scanner(System.in);
+		//Scanner lector = new Scanner(System.in);
 		boolean salir=false;
 		
 		
 		int selectorMenu;
 		Empresa E =new Empresa();
-		Centro C=new Centro("Instituto", "Jaen", "Jaen", 01, "953202020");
+		Centro C=new Centro("Instituto", "Jaen", "Jaen", "01", "953202020");
+		E.añadirCentro(C);
 		//Tecnico T=new Tecnico ();
+		try {
+			E.GrabaEmpresa(E);
+		} catch (IOException e1) {
+			// TODO Bloque catch generado automáticamente
+			e1.printStackTrace();
+		}
+		
+		
+		
+		
 //-----------------------------------------------------------------------------------------------
 		/*
 		 * Metodo utulizado para decidir si se carga un objeto empresa o se inicializa uno nuevo
@@ -22,48 +33,63 @@ public class Principal {
 		selectorMenu= Utilidades.primerMenu(); 
 		switch (selectorMenu) {
 		case 1:
+			//Cargamos la empresa guardada en el documento empresa.txt
+			
 			try {
 				E=E.LeerEmpresa();
 			} catch (FileNotFoundException e) {
-				// TODO Bloque catch generado automáticamente
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// TODO Bloque catch generado automáticamente
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Bloque catch generado automáticamente
 				e.printStackTrace();
 			}
-			break;
-		case 2:
+			
+			// Cambiamos el valor de salir para entrar al menu. 
 			salir=true;
 			break;
-		default: System.out.println("No ha seleccionado una opcion valido");
+		case 2:
+			//Puesto que Empresa ya esta creada no hace falta hacer nada.
+			
+			salir=true;
+			break;
+		default: 
+			/*
+			 * Mensaje de error 
+			 */
+			System.out.println("No ha seleccionado una opcion valido");
 			break;
 		}
 		
 		/*
-		 * Iniciamos el menu
+		 * Iniciamos el menu.
 		 */
 		if(salir) {
 			do {
-				selectorMenu=Utilidades.gestion();
-				do {switch (selectorMenu) {
-				case 1:
-					selectorMenu=Utilidades.gestionCentro();
+				//Preguntamos opciones del menu principal
+				selectorMenu=Utilidades.menuGestion();
+				
+				do {
+					switch (selectorMenu) {
 					
+				case 1:  //Salimos de la Aplicacion
 					
+					salir=true;
 					break;
+				
 				case 2:
-
+					selectorMenu=Utilidades.menuGestionCentro();
+						while (Utilidades.gestionCentro(selectorMenu, E));
+					
 				default:
 					break;
 				}
-					
-				} while (salir);
-				salir=true;
-			} while (salir=!true);
+					System.out.println("1");
+				} while (salir=!true);
 				
+				Utilidades.limpiar();
+			} while (salir=!true);
+			System.out.println("2");
 		}
 		
 		

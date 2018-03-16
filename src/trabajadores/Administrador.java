@@ -13,7 +13,7 @@ public class Administrador extends Trabajador{
 	@Override
 	public double nomina(int mes) {
 		
-		return ((Utilidades.dias(mes)*10.70)+200);
+		return ((Utilidades.Mes(mes)*10.70)+200);
 	}
 
 	
