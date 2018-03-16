@@ -14,6 +14,9 @@ public class Principal {
 		Empresa E =new Empresa();
 		Centro C=new Centro("Instituto", "Jaen", "Jaen", "01", "953202020");
 		E.añadirCentro(C);
+		String []dato= {"nobrecentro","Jaen","JAen","00","123456789"};
+		Centro p=new Centro (dato);
+		E.añadirCentro(p);
 		//Tecnico T=new Tecnico ();
 		try {
 			E.GrabaEmpresa(E);

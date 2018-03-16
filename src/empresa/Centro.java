@@ -27,7 +27,12 @@ public class Centro implements Serializable{
 	 * @param String[5] con los datos del centro
 	 */
 	public Centro(String [] datos) {
-		new Centro(datos[0],datos[1],datos[2],datos[3],datos[4]);}
+		this.nombre=datos[0];
+		this.localidad=datos[1];
+		this.provincia=datos[2];
+		this.codigo=datos[3];
+		this.telefono=datos[4];
+		}
 	
 	/**
 	 * Constructor con todos los datos
@@ -141,11 +146,7 @@ public class Centro implements Serializable{
 	 * @return
 	 */
 	public String datosCompletos() {
-		return codigo+" "+" Con el nombre "+nombre+" con el telefono"+telefono+" situado en "+localidad+" "+provincia;
+		return codigo+" "+" Con el nombre "+nombre+" con el telefono "+telefono+" situado en "+localidad+" "+provincia;
 		
 	}
-
-	
-	
-	
 }
