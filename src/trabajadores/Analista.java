@@ -1,7 +1,5 @@
 package trabajadores;
 
-import empresa.Utilidades;
-
 @SuppressWarnings("serial")
 public class Analista extends Trabajador {
 
@@ -9,6 +7,11 @@ public class Analista extends Trabajador {
 		super(nombre, apellido1, apellido2, dni, centro);
 		
 	}
+
+	public Analista() {
+	
+	}
+	
 
 	public int compareTo(Analista o) {
 		
@@ -20,7 +23,7 @@ public class Analista extends Trabajador {
 	 */
 	public double nomina(int mes) {
 		//Se multiplica al final por 1.1 por que tienen un 10% mas de complemento
-		return (super.sueldoBase + Utilidades.Mes(mes)*30)*1.1;
+		return (super.sueldoBase + menus.Utilidades.Mes(mes)*30)*1.1;
 	}
 
 	

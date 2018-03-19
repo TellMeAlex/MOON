@@ -9,6 +9,12 @@ public class Becario extends Trabajador{
 		
 	}
 
+	public Becario() {
+		
+	}
+
+		
+
 	public int compareTo(Becario o) {
 		return this.compareTo(o);}
 

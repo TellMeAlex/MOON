@@ -5,12 +5,18 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class Tecnologia implements Serializable{
 	private String nombre;
-	private int codigo;
+	private String codigo;
 
-	public Tecnologia(String nombre,int codigo) 
+	public Tecnologia(String nombre,String codigo) 
 	{
 		this.setNombre(nombre);
 		this.setCodigo(codigo);	
+	}
+	
+	public Tecnologia(String datos[]) 
+	{
+		this.setNombre(datos[0]);
+		this.setCodigo( datos[1]);	
 	}
 
 	/**
@@ -30,18 +36,22 @@ public class Tecnologia implements Serializable{
 	/**
 	 * @return el codigo
 	 */
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
 	/**
-	 * @param codigo el codigo a establecer
+	 * @param datos el codigo a establecer
 	 */
-	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+	public void setCodigo(String datos) {
+		this.codigo = datos;
 	}
 	public String toString(Object T) {
 		return nombre;
 		
+	}
+
+	public String datosCompletos() {
+		return "Nombre "+nombre+" Codigo "+codigo;
 	}
 }

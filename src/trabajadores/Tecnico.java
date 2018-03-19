@@ -19,7 +19,7 @@ public abstract  class Tecnico extends Trabajador implements Comparable<Trabajad
 	}
 	
 	public Tecnico() {
-		super(null);
+		super();
 	}
 	
 }

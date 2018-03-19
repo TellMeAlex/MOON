@@ -23,7 +23,7 @@ public abstract class Trabajador implements Comparable<Trabajador>, Serializable
 		Dni = dni;
 		Centro = centro;
 	}
-	public Trabajador(Trabajador T) {
+	public Trabajador() {
 		
 	}
 	

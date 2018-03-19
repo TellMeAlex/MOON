@@ -1,6 +1,6 @@
 package trabajadores;
 
-import empresa.Utilidades;
+import menus.Utilidades;
 
 @SuppressWarnings("serial")
 public class Administrativo extends Trabajador{
@@ -14,12 +14,17 @@ public class Administrativo extends Trabajador{
 	}
 	
 
+	public Administrativo() {
+		
+	}
+
+
 	/**
 	 * Devuelve la nomina del Administrativo
 	 * 
 	 */
 	public double nomina(int mes) {
-		return super.sueldoBase + Utilidades.Mes(mes)*10.70;
+		return super.sueldoBase + menus.Utilidades.Mes(mes)*10.70;
 	}
 
 

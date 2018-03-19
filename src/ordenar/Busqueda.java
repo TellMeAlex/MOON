@@ -40,6 +40,8 @@ public class Busqueda {
 		}
 		return cache;
 		
+		
+		
 	}
 	
 	
@@ -57,6 +59,13 @@ public class Busqueda {
 		}
 		return cache;
 		
+	}
+
+	public static void Mostrar (TreeMap<String , Trabajador> A) {
+		for (Entry<String, Trabajador> p : A.entrySet()) {
+			Trabajador C=p.getValue();
+			System.out.println(C.todosLosDatos());
+		}
 	}
 
 }

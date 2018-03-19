@@ -1,7 +1,8 @@
 package ordenar;
 
 import java.util.Comparator;
-import empresa.Utilidades;
+
+import menus.Utilidades;
 import trabajadores.Trabajador;
 
 public class OrdenarNomina implements Comparator<Trabajador> {

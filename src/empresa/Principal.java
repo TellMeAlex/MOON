@@ -1,9 +1,6 @@
 package empresa;
 
 import java.io.*;
-import java.util.Scanner;
-
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 public class Principal {
 
@@ -36,7 +33,7 @@ public class Principal {
 		 * Metodo utulizado para decidir si se carga un objeto empresa o se inicializa uno nuevo
 		 */
 		
-		selectorMenu= Utilidades.primerMenu(); 
+		selectorMenu= menus.Utilidades.primerMenu(); 
 		switch (selectorMenu) {
 		case 1:
 			//Cargamos la empresa guardada en el documento empresa.txt
@@ -58,6 +55,7 @@ public class Principal {
 			//Puesto que Empresa ya esta creada no hace falta hacer nada.
 			
 			salir=true;
+			
 			break;
 		default: 
 			/*
@@ -73,28 +71,49 @@ public class Principal {
 		if(salir) {
 			do {
 				//Preguntamos opciones del menu principal
-				selectorMenu=Utilidades.menuGestion();
-				
+				selectorMenu=menus.Utilidades.menuGestion();
 				do {
 					switch (selectorMenu) {
 					
 				case 1:  //Salimos de la Aplicacion
 					
-					salir=true;
+					salir=false;
 					break;
 				
 				case 2:
-					selectorMenu=Utilidades.menuGestionCentro();
-						while (Utilidades.gestionCentro(selectorMenu, E));
-					
+					int eleccion=menus.Utilidades.menuGestionCentro();
+						while (menus.Utilidades.gestionCentro(eleccion, E));
+						salir=true;
+						break;
+				case 3:
+					eleccion=(menus.Utilidades.menuGestionTecnologias());
+						while (menus.Utilidades.gestionTecnologia(eleccion, E));
+						salir=true;
+						break;
+				case 4:
+					selectorMenu=menus.Utilidades.menuGestionEmpleados();
+						while (menus.Utilidades.gestionEmpleado(selectorMenu, E));
+						salir=true;
+						break;
+				case 5:
+					selectorMenu=menus.Utilidades.menuListar();
+						while (menus.Utilidades.gestionListas(selectorMenu, E));
+						salir=true;
+						break;
+						
+				case 6:
+					selectorMenu=menus.Utilidades.menuBuscarEmpleados();
+						while (menus.Utilidades.gestionBusqueda(selectorMenu, E));
+						salir=true;
+						break;
 				default:
-					break;
+					System.out.println("No ha elegido una opcion valida");
 				}
-					System.out.println("1");
-				} while (salir=!true);
 				
-				Utilidades.limpiar();
-			} while (salir=!true);
+				} while (salir);
+				
+				menus.Utilidades.limpiar();
+			} while (salir=true);
 			System.out.println("2");
 		}
 		
@@ -108,5 +127,3 @@ public class Principal {
 		
 		}
 	}
-
-

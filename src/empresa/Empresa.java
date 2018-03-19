@@ -88,6 +88,13 @@ public class Empresa implements Serializable {
 		this.tecnologias = tecnologias;
 	}
 	
+	public void añadirTecnologia(Tecnologia Tecnologia) {
+		this.tecnologias.put(Tecnologia.getCodigo(), Tecnologia);
+	}
+	
+	public void borraTecnologia(String borrado) {
+		this.tecnologias.remove(borrado);
+	}
 		 
 	public void altaTrabajador(Trabajador T,TreeMap <String,Trabajador> plantilla) {
 		plantilla.put(T.getDni(), T);
@@ -101,13 +108,13 @@ public class Empresa implements Serializable {
 	public Empresa LeerEmpresa() throws FileNotFoundException, IOException, ClassNotFoundException{
 		//Leer el objeto guardado
 		
-		 ObjectInputStream leido = new ObjectInputStream(new FileInputStream("Empresa.txt"));
+		 ObjectInputStream leido = new ObjectInputStream(new FileInputStream("Empresa.csv"));
 				return (Empresa)leido.readObject();
 				
 	}
 	
 	public void GrabaEmpresa(Empresa o) throws FileNotFoundException, IOException{
-		ObjectOutputStream guardado= new ObjectOutputStream(new FileOutputStream("Empresa.txt"));
+		ObjectOutputStream guardado= new ObjectOutputStream(new FileOutputStream("Empresa.csv"));
 			guardado.writeObject (o);
 	}
 	
@@ -115,11 +122,15 @@ public class Empresa implements Serializable {
 		for (Entry<String, Centro> centro : centros.entrySet()) {
 			Centro C=centro.getValue();
 			System.out.println(C.datosCompletos());
-		}
-		
-		
+		}		
 	}
 
+	public void listarTecnologias(){
+		for (Entry<String, Tecnologia> Tecnologia : tecnologias.entrySet()) {
+			Tecnologia C=Tecnologia.getValue();
+			System.out.println(C.datosCompletos());
+		}		
+	}
 	
 	
 }

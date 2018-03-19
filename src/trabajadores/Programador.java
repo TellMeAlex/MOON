@@ -1,6 +1,6 @@
 package trabajadores;
 
-import empresa.Utilidades;
+import menus.Utilidades;
 
 @SuppressWarnings("serial")
 public class Programador extends Tecnico{
@@ -12,5 +12,6 @@ public class Programador extends Tecnico{
 	public double nomina(int mes) {
 		return super.sueldoBase + Utilidades.Mes(mes)*20.50;
 	}
-
+	
+	
 }
