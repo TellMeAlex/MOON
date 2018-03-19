@@ -3,13 +3,15 @@ package empresa;
 import java.io.*;
 import java.util.Scanner;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 public class Principal {
 
+	
 	public static void main(String[] args)  {
 		//Scanner lector = new Scanner(System.in);
 		boolean salir=false;
-		
-		
+				
 		int selectorMenu;
 		Empresa E =new Empresa();
 		Centro C=new Centro("Instituto", "Jaen", "Jaen", "01", "953202020");
@@ -25,10 +27,11 @@ public class Principal {
 			e1.printStackTrace();
 		}
 		
+//------------------------------Metodo que he considerado necesario utilizar aqui------------------------	
 		
 		
 		
-//-----------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------
 		/*
 		 * Metodo utulizado para decidir si se carga un objeto empresa o se inicializa uno nuevo
 		 */

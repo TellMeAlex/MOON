@@ -20,8 +20,13 @@ public class Utilidades {
 	static String [] buscarEmpleados= {"Salir","Por nombre","Por DNI","Por Apellido",};
 	static String [] Empleados= {"Salir","Tecnico","Administrativo"};
 	static String [] Tecnicos= {"Salir","Programador","Analista","Becario"};
+	public static int Mes=1;
 	static Scanner lector = new Scanner(System.in);
 	
+	
+	public static void setMes(int mes) {
+		Mes=mes;
+	}
 	
 	
 	/**
@@ -78,7 +83,6 @@ public class Utilidades {
 	}
 
 	/**
-	 * 
 	 * @param Vector de String
 	 * @return El tamaño(int) del String mas grande
 	 */
@@ -106,20 +110,7 @@ public class Utilidades {
 		}
 		
 	}
-	
-	
-	/**
-	 * Recore y muestra los trabajadores
-	 * @param Colecion de trabajadores
-	 */
-	public void listarTrabajadores(Collection<Trabajador> a) {
-		for (Trabajador t : a) {
-			System.out.println(t.todosLosDatos());
-		}
-	}
-	
 
-	
 	/**
 	 * Limpia la consola 
 	 */

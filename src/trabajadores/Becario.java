@@ -10,13 +10,14 @@ public class Becario extends Trabajador{
 	}
 
 	public int compareTo(Becario o) {
-		return 0;
-	}
+		return this.compareTo(o);}
 
-	@Override
+	/**
+	 * Obtener la nomina del becario
+	 */
 	public double nomina(int mes) {
 		
-		return 200;
+		return super.sueldoBase;
 	}
 
 	

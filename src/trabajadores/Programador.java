@@ -5,9 +5,12 @@ import empresa.Utilidades;
 @SuppressWarnings("serial")
 public class Programador extends Tecnico{
 
-	@Override
+	
+	/**
+	 * Devuelve la nomina del Programador
+	 */
 	public double nomina(int mes) {
-		return (Utilidades.Mes(mes)*20.50)+200;
+		return super.sueldoBase + Utilidades.Mes(mes)*20.50;
 	}
 
 }

@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 import empresa.Centro;
 
+
 @SuppressWarnings("serial")
 public abstract class Trabajador implements Comparable<Trabajador>, Serializable{
 	
-	/**
-	 * 
-	 */
+	final double sueldoBase = 200;
+	
 	private String Nombre;
 	private String Apellido1;
 	private String Apellido2;
@@ -101,13 +101,8 @@ public abstract class Trabajador implements Comparable<Trabajador>, Serializable
 		return getApellido1()+" "+getApellido2()+" "+getNombre();
 		
 	}
-	//----------------------------------------------------------------------------------------------------------------------\\
-	@Override
-	public boolean equals(Object a) {
-		
-		return false;
-	//----------------------------------------------------------------------------------------------------------------------\\	
-	}
+
+	
 	@Override
 	public int compareTo(Trabajador o) {
 		return this.nombreCompleto().compareTo(nombreCompleto());
@@ -117,7 +112,14 @@ public abstract class Trabajador implements Comparable<Trabajador>, Serializable
 		return todosLosDatos();
 		
 	}
-	public abstract double nomina(int dia);
+	/**
+	 * Metodo para devolder la nomina de un trabajador.
+	 * @param Nº de mes del que se desa saber la nomina
+	 * @return Nomina del empleado
+	 */
+	public abstract double nomina(int mes);
+	
+	
 	public String todosLosDatos() {
 		return getApellido1()+" "+getApellido2()+" "+getNombre()+"-"+getDni();
 		}

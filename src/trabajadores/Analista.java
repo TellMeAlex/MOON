@@ -14,10 +14,14 @@ public class Analista extends Trabajador {
 		
 		return this.compareTo(o);}
 
-	@Override
+	/**
+	 * Devuelve la nomina del Analista
+	 * 
+	 */
 	public double nomina(int mes) {
-		double nomina=(Utilidades.Mes(mes)*30)+200;
-		return (nomina*0.10)+nomina;
+		//Se multiplica al final por 1.1 por que tienen un 10% mas de complemento
+		return (super.sueldoBase + Utilidades.Mes(mes)*30)*1.1;
 	}
+
 	
 }
