@@ -10,6 +10,8 @@ import java.util.Map.Entry;
 import trabajadores.Trabajador;
 
 public class Busqueda {
+	
+	
 	public static TreeMap<String , Trabajador> buscarTrabajador(TreeMap<String , Trabajador> plantilla,String dni) {
 		TreeMap<String , Trabajador> cache=new TreeMap <String,Trabajador>();
 		
